@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dev Privacy Guard</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <span class="brand-mark">↳</span>
+        <div>dev<span>.</span><small>privacy guard</small></div>
+      </div>
+      <button
+        id="dashboard"
+        class="icon-button"
+        title="Open local dashboard"
+        aria-label="Open local dashboard"
+      >
+        ↗
+      </button>
+    </header>
+    <main>
+      <div id="error" class="alert" role="alert" hidden></div>
+      <section id="pairing" hidden>
+        <span class="eyebrow">CONNECT LOCALLY</span>
+        <h1>Your agent,<br /><em>with boundaries.</em></h1>
+        <p>Pair this extension with the companion running on your device.</p>
+        <form id="pair-form">
+          <label for="code">Terminal pairing code</label
+          ><input
+            id="code"
+            required
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Enter pairing code"
+          /><button type="submit" class="button primary full">
+            Connect extension <span>→</span>
+          </button>
+        </form>
+        <div class="note">
+          Start the companion, then paste the code printed in your terminal. The
+          same code pairs your dashboard and extension during its 30-minute
+          pairing window.
+        </div>
+      </section>
+      <section id="workspace" hidden>
+        <div class="connection">
+          <span id="connection-dot" class="status-dot"></span
+          ><span id="connection-text">Local companion</span
+          ><button id="settings-toggle">Settings</button>
+        </div>
+        <div id="locked" class="notice" hidden>
+          <strong>Your local vault is locked.</strong>
+          <p>
+            Open the dashboard to unlock your information before starting a
+            task.
+          </p>
+          <button id="unlock" class="button secondary full">
+            Open dashboard to unlock ↗
+          </button>
+        </div>
+        <div id="ready">
+          <div class="section-title">
+            <span class="eyebrow">YOUR BROWSER ASSISTANT</span
+            ><span class="badge">LOCAL</span>
+          </div>
+          <h1>What can I<br /><em>take off your list?</em></h1>
+          <p class="intro">Give me a task. You decide what to share.</p>
+          <div class="target-card">
+            <span class="tab-icon">▣</span>
+            <div>
+              <small>CURRENT TAB</small
+              ><strong id="tab-title">Checking this tab…</strong
+              ><span id="tab-url"></span>
+            </div>
+            <button
+              id="refresh-tab"
+              title="Refresh selected tab"
+              aria-label="Refresh selected tab"
+            >
+              ↻
+            </button>
+          </div>
+          <form id="task-form">
+            <label for="goal">Your task</label
+            ><textarea
+              id="goal"
+              rows="4"
+              placeholder="Fill this form using my saved profile and reviewed statement total."
+              maxlength="5000"
+              required
+            ></textarea>
+            <div class="voice-launch">
+              <button id="voice-open" type="button" class="button secondary">
+                Record voice task</button
+              ><small
+                >Record locally, then explicitly send to Whisper. Audio is sent
+                unredacted to OpenAI.</small
+              >
+            </div>
+            <p id="transcript-note" class="resume-note" role="status" hidden>
+              Transcript added. Edit your task before starting; nothing has
+              started automatically.
+            </p>
+            <div class="prompt-chips">
+              <button
+                type="button"
+                data-goal="Fill this form using my saved profile. Stop before submitting."
+              >
+                Fill this form</button
+              ><button
+                type="button"
+                data-goal="Fill this form using my saved profile and reviewed statement total. Stop before submitting."
+              >
+                Use my documents
+              </button>
+            </div>
+            <label for="start-url"
+              >Starting website <small>optional</small></label
+            >
+            <input
+              id="start-url"
+              type="url"
+              placeholder="https://example.com/application"
+            />
+            <p class="resume-note">
+              No open page needed. Enter a URL here or include an https://
+              website URL in your goal.
+            </p>
+            <label for="mode">Reasoning</label
+            ><select id="mode">
+              <option value="demo">Demo planner · no remote model</option>
+              <option value="remote">Remote model · reviewed context</option>
+            </select>
+            <div id="remote-options">
+              <label class="check-option"
+                ><input id="vision" type="checkbox" checked /><span
+                  >Visual checkpoints<small
+                    >Review each screenshot before sending.</small
+                  ></span
+                ></label
+              >
+              <label class="check-option"
+                ><input id="review-text" type="checkbox" /><span
+                  >Also review text-only requests</span
+                ></label
+              >
+            </div>
+            <label class="check-option"
+              ><input id="stop-before-submit" type="checkbox" checked /><span
+                >Stop before final submission</span
+              ></label
+            >
+            <label>Available information</label>
+            <div id="record-list" class="record-list"></div>
+            <p class="task-consent">
+              Starting authorizes selected details to be entered on the task
+              website. It may receive those values immediately. Final submission
+              follows your setting above.
+            </p>
+            <button id="start" type="submit" class="button primary full">
+              Start task <span>→</span>
+            </button>
+          </form>
+          <div class="privacy-note">
+            <span>♧</span>
+            <p>
+              Your model sees references. Real details are entered locally, with
+              your approval.
+            </p>
+          </div>
+        </div>
+        <section id="task" hidden>
+          <div class="section-title">
+            <span class="eyebrow">TASK IN PROGRESS</span
+            ><span id="task-status" class="badge"></span>
+          </div>
+          <h2 id="task-goal"></h2>
+          <div class="task-meta">
+            <span id="step"></span><span id="task-id"></span>
+          </div>
+          <div id="approval" class="approval" hidden>
+            <span class="eyebrow">WAITING FOR YOU</span>
+            <h3 id="approval-title"></h3>
+            <p id="approval-description"></p>
+            <details open>
+              <summary>Inspect exact payload</summary>
+              <pre id="approval-payload"></pre>
+            </details>
+            <button id="image-review" class="button primary full" hidden>
+              Review image in dashboard ↗
+            </button>
+            <div class="approval-actions">
+              <button id="deny" class="button secondary">Deny</button
+              ><button id="approve" class="button primary">Approve</button>
+            </div>
+          </div>
+          <div id="task-error" class="alert" hidden></div>
+          <div id="task-result" class="result" hidden></div>
+          <div id="resume-information" hidden>
+            <label>Review available information</label>
+            <p class="resume-note">
+              Add missing information in the dashboard, refresh this list, then
+              resume with the fields selected here.
+            </p>
+            <div class="missing-links">
+              <button id="missing-vault" class="button secondary">
+                Add details ↗</button
+              ><button id="missing-documents" class="button secondary">
+                Upload document ↗
+              </button>
+            </div>
+            <div id="resume-record-list" class="record-list"></div>
+            <button id="refresh-records" class="text-link">
+              Refresh reviewed information ↻
+            </button>
+          </div>
+          <div class="timeline-heading">
+            <h3>Activity</h3>
+            <span id="event-count"></span>
+          </div>
+          <div id="events" class="timeline"></div>
+          <div id="task-controls" class="controls">
+            <button id="pause" class="button secondary">Pause</button
+            ><button id="stop" class="button danger">Stop task</button>
+          </div>
+          <button id="new-task" class="button secondary full" hidden>
+            Start another task →</button
+          ><button id="task-dashboard" class="text-link">
+            View in local dashboard ↗
+          </button>
+        </section>
+        <div id="settings" class="settings" hidden>
+          <div class="section-title">
+            <h2>Local connection</h2>
+            <button
+              id="settings-close"
+              class="icon-button"
+              aria-label="Close settings"
+            >
+              ×
+            </button>
+          </div>
+          <p>
+            The extension uses only the local companion at
+            <code>127.0.0.1:8765</code>.
+          </p>
+          <div class="note">
+            Use the dedicated automation browser launched by the companion. Tabs
+            are matched by their exact browser target ID.
+          </div>
+          <button id="launch" class="button secondary full">
+            Launch automation browser ↗</button
+          ><button id="demo" class="button secondary full">
+            Open synthetic demo form ↗</button
+          ><button id="portal-prepare" class="button secondary full">
+            Prepare portal demo in dashboard ↗</button
+          ><button id="voice-settings" class="button secondary full">
+            Configure Whisper transcription ↗</button
+          ><button id="disconnect" class="button secondary full">
+            Disconnect extension</button
+          ><small
+            >No profile values or documents are saved in extension
+            storage.</small
+          >
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span class="status-dot"></span> Your data. Your device. Your decision.
+    </footer>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

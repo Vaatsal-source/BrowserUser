@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+.DS_Store
+.guard-data/
+.runtime/
+test-results/

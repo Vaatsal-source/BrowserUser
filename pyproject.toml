@@ -1,0 +1,42 @@
+[project]
+name = "dev-privacy-guard"
+version = "0.2.0"
+description = "A local privacy vault and browser assistant built on Browser Use"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "browser-use==0.13.10",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "python-multipart>=0.0.20,<1",
+  "cryptography>=44,<49",
+  "pypdf>=6,<7",
+  "pypdfium2>=4.30,<6",
+  "pillow>=12,<13",
+  "pytesseract>=0.3.13,<1",
+  "httpx>=0.28,<1",
+  "playwright>=1.50,<2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2", "ruff>=0.11,<1"]
+
+[project.scripts]
+privacy-guard = "privacy_guard.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["privacy_guard"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

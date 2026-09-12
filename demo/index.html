@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Local application · Dev Privacy Guard demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div class="logo">
+        <span>↳</span>dev<span class="muted"> / sandbox</span>
+      </div>
+      <span class="local">● SYNTHETIC DEMO · THIS DEVICE ONLY</span>
+    </div>
+    <main>
+      <aside>
+        <span class="eyebrow">A SAFE PLACE TO TRY YOUR AGENT</span>
+        <h1>A form that works<br />with your privacy.</h1>
+        <p>
+          Use the Dev Privacy Guard extension to fill this application from your
+          local profile. This page has no outbound requests.
+        </p>
+        <div class="instructions">
+          <div>
+            <span>01</span>
+            <p>Open the extension in this browser.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <p>Ask it to fill this form with your saved details.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <p>Review context and approve the disclosure.</p>
+          </div>
+          <div>
+            <span>04</span>
+            <p>Check the form before approving submission.</p>
+          </div>
+        </div>
+        <div class="privacy">
+          <strong>Demo information only</strong>
+          <p>
+            This is a synthetic application, not a tax portal. Submission stays
+            in this page and creates no real application.
+          </p>
+        </div>
+      </aside>
+      <section class="form-card">
+        <header>
+          <span class="eyebrow">DEMO APPLICATION / 001</span>
+          <h2>Let's get the details right.</h2>
+          <p>Complete your applicant information below.</p>
+        </header>
+        <form id="application" autocomplete="off">
+          <div class="section-label">01 — PERSONAL INFORMATION</div>
+          <label for="full_name">Full name <span>*</span></label
+          ><input
+            id="full_name"
+            name="full_name"
+            data-field-type="person_name"
+            autocomplete="off"
+            placeholder="Your full name"
+            required
+          />
+          <div class="two">
+            <label for="email"
+              >Email address <span>*</span
+              ><input
+                id="email"
+                name="email"
+                data-field-type="email"
+                type="email"
+                autocomplete="off"
+                placeholder="name@example.test"
+                required /></label
+            ><label for="phone"
+              >Phone number <span>*</span
+              ><input
+                id="phone"
+                name="phone"
+                data-field-type="phone"
+                type="tel"
+                autocomplete="off"
+                placeholder="Your phone number"
+                required
+            /></label>
+          </div>
+          <label for="pan">PAN <span>*</span></label
+          ><input
+            id="pan"
+            name="pan"
+            data-field-type="pan"
+            autocomplete="off"
+            placeholder="ABCDE1234F"
+            pattern="[A-Z]{5}[0-9]{4}[A-Z]"
+            title="Five uppercase letters, four digits, and one uppercase letter"
+            required
+          /><label for="address">Address <span>*</span></label
+          ><textarea
+            id="address"
+            name="address"
+            data-field-type="address"
+            rows="3"
+            placeholder="Your address"
+            required
+          ></textarea>
+          <div class="section-label second">
+            02 — REVIEWED FINANCIAL INFORMATION
+          </div>
+          <label for="statement_total">Statement total (INR)</label>
+          <div class="amount-input">
+            <span>₹</span
+            ><input
+              id="statement_total"
+              name="statement_total"
+              data-field-type="money"
+              inputmode="decimal"
+              placeholder="0.00"
+            />
+          </div>
+          <p class="field-help">
+            Use the reviewed total from your local document or calculation.
+          </p>
+          <div class="submit-note">
+            <span>✓</span>
+            <p>
+              Review all fields before submitting. This demo creates a
+              confirmation only in this page.
+            </p>
+          </div>
+          <button type="submit" id="submit-application">
+            Submit application <span>→</span>
+          </button>
+        </form>
+        <div id="confirmation" hidden role="status">
+          <div class="success-icon">✓</div>
+          <span class="eyebrow">DEMO COMPLETED</span>
+          <h2>Application received locally.</h2>
+          <p>
+            The form was submitted inside this demo page. No information was
+            sent to an external service.
+          </p>
+          <p class="reference">DEMO REFERENCE · LOCAL-0001</p>
+          <button id="start-again" type="button">Start a fresh demo →</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      DEV PRIVACY GUARD
+      <span
+        >Local form fixture · No external resources · No network
+        submission</span
+      >
+    </footer>
+    <script src="form.js"></script>
+  </body>
+</html>

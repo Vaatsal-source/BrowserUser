@@ -1,0 +1,11 @@
+MERIDIAN - FICTIONAL APPLICATION STATEMENT
+Synthetic example only. No real account or filing.
+
+Name: Aarav Example
+PAN: ABCDE1234F
+Address: 42 Sample Lane, Demo City
+Statement total: 3050.00
+
+This statement supplies the details missing from the partial demo profile.
+Review the extracted PAN, address, and statement total in the local dashboard.
+Keep these facts scoped to this document unless you explicitly save them to your profile.

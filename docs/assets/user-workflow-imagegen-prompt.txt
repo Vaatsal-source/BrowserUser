@@ -1,0 +1,28 @@
+Use case: infographic-diagram.
+Create a polished non-linear user-workflow flowchart for "DEV PRIVACY GUARD" for a hackathon presentation. Landscape 16:9, high resolution, white background, crisp highly legible dark sans-serif text. Title "User Workflow" with small product name "DEV PRIVACY GUARD". Style inspired by the user's reference charts: flat pastel blue process cards, lavender grouped panels and diamonds, soft pink human-review cards, pale yellow cloud card, mint completion; thin blue orthogonal arrows, simple black outline icons, generous white space. No screenshots of other apps, no watermarks, no fake UI, no technical stack terms. This is the intended full product workflow for a non-technical judge.
+
+Use a thoughtfully organized branching diagram, NOT a single linear chain. Main flow across upper and middle rows, human-input branch below, clear return loop. Keep card copy short, use these exact node labels and supporting text:
+A "Give it a goal" / "Fill my scholarship application"
+B "Find & open the website"
+C "Scan & redact locally" / "Hide passwords, faces and personal text"
+D "Review what will be shared" / "Approve the cleaned screenshot"
+E "Cloud AI plans the next step" / "Receives redacted context only"
+F "Fill approved details" / "AI chooses the field; values stay local until entered"
+G diamond "Need your help?"
+H pink card "Pause & ask you"
+I pink card "Add a document or detail" / "Process locally · Review · Save if you choose"
+J blue card "Re-check the page & resume"
+K diamond "Task ready?"
+L pink card "Review final action" / "Submit or pay only with your approval"
+M diamond "Approve?"
+N mint card "Execute & confirm"
+O small neutral card "Stay paused"
+
+Connections must accurately and unambiguously follow this graph:
+A -> B -> C -> D -> E -> F -> G.
+D to E arrow labeled "Approved"; a short side branch from D labeled "Edit masks" loops back to C, so there is no raw or unapproved screenshot path to cloud.
+G Yes -> H -> I -> J -> C, showing the missing-information/resume loop.
+G No -> K.
+K No -> J (continue observing and acting); K Yes -> L -> M.
+M Yes -> N; M No -> O.
+All edges have arrowheads at their actual destination. No unintended connections, overlapping arrows or arrows crossing text. Separate help branch spatially below main flow and route the long return arrow around the outside. Distinguish final approval from screenshot approval. Small local-profile database cylinder labeled "Approved profile" feeds F directly, with a lock icon; it must NOT connect to cloud. Place a compact note near cloud: "Raw screenshots are never sent". Main grouping around local scanning and profile says "ON YOUR DEVICE"; cloud is visually outside local group. Do not number nodes, do not show internal letter IDs A-O. No oversized decorative icons. Prioritize coherent branching and readable labels over decoration. Use ample canvas space and balanced hierarchy.

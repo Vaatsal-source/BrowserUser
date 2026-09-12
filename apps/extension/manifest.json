@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Dev Privacy Guard",
+  "description": "Start and supervise a local Browser Use agent. Personal information stays in your local companion vault.",
+  "version": "0.2.0",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel", "storage", "tabs", "debugger"],
+  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Open Dev Privacy Guard" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src http://127.0.0.1:8765"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

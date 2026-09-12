@@ -1,0 +1,12 @@
+DEV PRIVACY GUARD - SYNTHETIC STATEMENT
+This document contains fabricated information for local testing.
+Name: Aarav Example
+Email: aarav@example.test
+Phone: 9000012345
+PAN: ABCDE1234F
+Address: 42 Sample Lane, Demo City
+Amount: 1000.25
+Amount: 2049.75
+Total: 3050.00
+
+Review all extracted fields before confirming. Do not sum the Total together with the individual Amount records.

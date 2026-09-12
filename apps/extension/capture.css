@@ -1,0 +1,75 @@
+body {
+  min-width: 300px;
+}
+.capture-workspace {
+  max-width: 670px;
+  margin: 0 auto;
+  padding: 48px 28px;
+}
+.capture-workspace > .brand {
+  margin-bottom: 44px;
+}
+.capture-workspace h1 {
+  font-size: 36px;
+}
+.capture-intro {
+  margin-top: 18px;
+  font-size: 12px;
+}
+.capture-card {
+  background: #172930;
+  border: 1px solid #3e564b;
+  border-radius: 10px;
+  padding: 23px;
+}
+.capture-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.capture-buttons > button {
+  flex-grow: 1;
+}
+.audio-disclosure {
+  margin: 23px 0 18px;
+  border-top: 1px solid #3a5046;
+  padding-top: 19px;
+}
+.audio-disclosure strong {
+  font-size: 12px;
+  color: #e6d5ad;
+}
+.audio-disclosure p {
+  margin-top: 8px;
+}
+audio {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  height: 38px;
+}
+#transcript-section {
+  margin-top: 26px;
+}
+#transcript-section textarea {
+  margin-bottom: 10px;
+}
+#transcript-section .capture-buttons {
+  margin-top: 18px;
+}
+.capture-footer {
+  text-align: center;
+  font-size: 9px;
+  margin-top: 25px;
+}
+@media (max-width: 450px) {
+  .capture-workspace {
+    padding: 28px 18px;
+  }
+  .capture-card {
+    padding: 17px;
+  }
+  .capture-workspace h1 {
+    font-size: 30px;
+  }
+}

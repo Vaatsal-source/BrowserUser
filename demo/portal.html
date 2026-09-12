@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'"
+    />
+    <title>Meridian · Fictional application portal</title>
+    <link rel="stylesheet" href="portal.css" />
+  </head>
+  <body>
+    <header class="portal-header">
+      <a href="portal.html" class="portal-brand"
+        ><span class="brand-symbol">m</span
+        ><span>meridian<small>DEMO SERVICES</small></span></a
+      ><span class="sandbox-label">Fictional portal · local only</span>
+    </header>
+    <main>
+      <aside class="portal-sidebar">
+        <span class="eyebrow">APPLICATION WORKSPACE</span>
+        <h2>A clear path<br />to your review.</h2>
+        <ol class="steps" aria-label="Application progress">
+          <li data-step="landing" aria-current="step">
+            <span>01</span>
+            <div>Get started<small>Understand what's needed</small></div>
+          </li>
+          <li data-step="application">
+            <span>02</span>
+            <div>
+              Application details<small
+                >Personal and financial information</small
+              >
+            </div>
+          </li>
+          <li data-step="review">
+            <span>03</span>
+            <div>Review<small>Check before final submission</small></div>
+          </li>
+        </ol>
+        <div class="local-notice">
+          <span>↳</span><strong>A safe demo environment</strong>
+          <p>
+            All information is fictional. This portal does not file taxes, open
+            accounts, or send your application anywhere.
+          </p>
+        </div>
+        <a class="legacy-link" href="index.html"
+          >Open the original single-form fixture ↗</a
+        >
+      </aside>
+      <div class="portal-content">
+        <section id="landing" class="view">
+          <div class="page-kicker">
+            <span class="eyebrow">MERIDIAN SUPPORT APPLICATION</span
+            ><span class="pill">DEMO / 002</span>
+          </div>
+          <h1>Let's prepare<br />your application.</h1>
+          <p class="lead">
+            Enter your details, add the total from your statement, and check the
+            review before submitting this fictional application.
+          </p>
+          <div class="requirement-list">
+            <h2>Information you'll need</h2>
+            <div>
+              <span>01</span>
+              <p>
+                <strong>Contact details</strong
+                ><small>Full name, email address, and phone number.</small>
+              </p>
+            </div>
+            <div>
+              <span>02</span>
+              <p>
+                <strong>Identity and address</strong
+                ><small>Your PAN and complete address.</small>
+              </p>
+            </div>
+            <div>
+              <span>03</span>
+              <p>
+                <strong>Reviewed statement total</strong
+                ><small>The INR total from a statement you have checked.</small>
+              </p>
+            </div>
+          </div>
+          <div class="sample-document">
+            <span>▤</span>
+            <div>
+              <strong>Need a sample document?</strong>
+              <p>
+                Use the fictional statement in your agent's local document
+                review. It includes the remaining details.
+              </p>
+              <a href="documents/portal-statement.txt" download
+                >Download fictional statement ↓</a
+              >
+            </div>
+          </div>
+          <button id="start-application" type="button" class="primary">
+            Start application <span aria-hidden="true">→</span>
+          </button>
+          <p class="footnote">
+            About two minutes for this demo. Your entries stay in this page's
+            memory.
+          </p>
+        </section>
+        <section id="application-view" class="view" hidden>
+          <div class="page-kicker">
+            <span class="eyebrow">STEP 02 / APPLICATION DETAILS</span
+            ><span class="pill">LOCAL DRAFT</span>
+          </div>
+          <h1>Get the details right.</h1>
+          <p class="lead">
+            Fields marked with an asterisk are required. If information is
+            missing, ask the user to add it or review a source document.
+          </p>
+          <form id="portal-application" autocomplete="off">
+            <fieldset>
+              <legend>Personal information</legend>
+              <label for="full_name">Full name <span>*</span></label
+              ><input
+                id="full_name"
+                name="full_name"
+                data-field-type="person_name"
+                placeholder="Your full name"
+                required
+              />
+              <div class="field-pair">
+                <div>
+                  <label for="email">Email address <span>*</span></label
+                  ><input
+                    id="email"
+                    name="email"
+                    data-field-type="email"
+                    type="email"
+                    placeholder="name@example.test"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="phone">Phone number <span>*</span></label
+                  ><input
+                    id="phone"
+                    name="phone"
+                    data-field-type="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    required
+                  />
+                </div>
+              </div>
+              <label for="pan">PAN <span>*</span></label
+              ><input
+                id="pan"
+                name="pan"
+                data-field-type="pan"
+                placeholder="ABCDE1234F"
+                pattern="[A-Z]{5}[0-9]{4}[A-Z]"
+                title="Five uppercase letters, four digits, and one uppercase letter"
+                required
+              /><label for="address">Address <span>*</span></label
+              ><textarea
+                id="address"
+                name="address"
+                data-field-type="address"
+                rows="3"
+                placeholder="Your complete address"
+                required
+              ></textarea>
+            </fieldset>
+            <fieldset>
+              <legend>Financial information</legend>
+              <label for="statement_total"
+                >Statement total (INR) <span>*</span></label
+              ><input
+                id="statement_total"
+                name="statement_total"
+                data-field-type="money"
+                type="number"
+                min="0"
+                step="0.01"
+                inputmode="decimal"
+                placeholder="0.00"
+                required
+              />
+              <p class="field-help">
+                Use the reviewed total from your statement. Enter the amount in
+                INR, without a currency symbol.
+              </p>
+            </fieldset>
+            <div id="form-status" class="validation" role="status" hidden></div>
+            <div class="action-row">
+              <button id="back-to-start" type="button" class="secondary">
+                ← Back</button
+              ><button id="review-application" type="button" class="primary">
+                Review application <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </section>
+        <section id="review-view" class="view" hidden>
+          <div class="page-kicker">
+            <span class="eyebrow">STEP 03 / REVIEW</span
+            ><span class="pill">NOT SUBMITTED</span>
+          </div>
+          <h1>Everything in one place.</h1>
+          <p class="lead">
+            Check every detail below. Reaching this screen does not submit the
+            application.
+          </p>
+          <dl id="review-details" class="review-details"></dl>
+          <div class="review-notice">
+            <strong>This is the final review.</strong>
+            <p>
+              If your instruction is to stop before submitting, your task is
+              complete here. The button below creates only a synthetic
+              confirmation on this page.
+            </p>
+          </div>
+          <div class="action-row">
+            <button id="edit-application" type="button" class="secondary">
+              ← Edit details</button
+            ><button id="submit-application" type="button" class="primary">
+              Submit demo application <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+        <section id="confirmation-view" class="view" hidden role="status">
+          <div class="success-icon">✓</div>
+          <span class="eyebrow">SYNTHETIC CONFIRMATION</span>
+          <h1>Demo application complete.</h1>
+          <p class="lead">
+            The submission happened only inside this page. No real application
+            was created, and no details were sent to an external service.
+          </p>
+          <div class="confirmation-reference">
+            DEMO REFERENCE <strong>MERIDIAN-LOCAL-002</strong>
+          </div>
+          <button id="reset-application" type="button" class="secondary">
+            Start another demo →
+          </button>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <span>MERIDIAN IS A FICTIONAL SERVICE</span
+      ><span>No external resources · No network submission</span>
+    </footer>
+    <script src="portal.js"></script>
+  </body>
+</html>

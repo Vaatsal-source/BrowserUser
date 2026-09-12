@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Record a task · Dev Privacy Guard</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+    <link rel="stylesheet" href="capture.css" />
+  </head>
+  <body>
+    <main class="capture-workspace">
+      <div class="brand">
+        <span class="brand-mark">↳</span>
+        <div>dev<span>.</span><small>privacy guard</small></div>
+      </div>
+      <span class="eyebrow">VOICE INPUT · YOU CONTROL THE SEND</span>
+      <h1>Say your task.<br /><em>Review the words.</em></h1>
+      <p class="capture-intro">
+        Record up to 60 seconds. Recording and playback stay on this device
+        until you choose Transcribe.
+      </p>
+      <div id="capture-error" class="alert" role="alert" hidden></div>
+      <div id="capture-note" class="note" role="status">
+        Microphone access will be requested when you start recording.
+      </div>
+      <section class="capture-card">
+        <div class="capture-buttons">
+          <button id="record" class="button secondary">Start recording</button
+          ><button id="stop-recording" class="button secondary" hidden>
+            Stop recording</button
+          ><button id="discard" class="button secondary" hidden>
+            Discard recording
+          </button>
+        </div>
+        <audio
+          id="recording-playback"
+          controls
+          hidden
+          aria-label="Listen to local recording"
+        ></audio>
+        <div class="audio-disclosure">
+          <strong>Audio is sent unredacted to OpenAI.</strong>
+          <p>
+            This happens only when you click Transcribe with Whisper. No audio
+            redaction is applied. The separate Whisper key is managed in your
+            local dashboard.
+          </p>
+        </div>
+        <button id="transcribe" class="button primary full" disabled>
+          Transcribe with Whisper
+        </button>
+      </section>
+      <section id="transcript-section" hidden>
+        <label for="transcript">Editable transcript</label
+        ><textarea
+          id="transcript"
+          rows="5"
+          maxlength="5000"
+          placeholder="Your transcript appears here"
+        ></textarea>
+        <p class="resume-note">
+          Review the raw transcript. Using it only updates your task draft; it
+          never starts the agent.
+        </p>
+        <div class="capture-buttons">
+          <button id="open-panel" class="button secondary">
+            Open task side panel</button
+          ><button id="use-transcript" class="button primary">
+            Use transcript in task
+          </button>
+        </div>
+      </section>
+      <button id="capture-settings" class="text-link">
+        Open local transcription settings ↗
+      </button>
+      <p class="capture-footer">
+        Close this tab to discard the recording and transcript kept here.
+      </p>
+    </main>
+    <script src="capture.js"></script>
+  </body>
+</html>
